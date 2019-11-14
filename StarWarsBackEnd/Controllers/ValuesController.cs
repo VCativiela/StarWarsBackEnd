@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using StarWarsBackEnd.Infraestructure.Exceptions.Models;
+using StarWarsBackEnd.Services.Repositories.Interfaces;
+using StarWarsBackEnd.Services.Splitter;
+using System.Collections.Specialized;
 
 namespace StarWarsBackEnd.Controllers
 {
@@ -10,36 +10,33 @@ namespace StarWarsBackEnd.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
-        // GET api/values
-        [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
+        private readonly IRepository _repository;
+        private readonly IDataSplitter _dataSplitter;
 
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        public ValuesController(IRepository repository, IDataSplitter dataSplitter)
         {
-            return "value";
+            _repository = repository;
+            _dataSplitter = dataSplitter;
         }
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult Post([FromBody]StringCollection value)
         {
-        }
-
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            try
+            {
+                var rebelsCollection = _dataSplitter.SplitData(value);
+                _repository.SaveData(rebelsCollection);
+                return Ok();
+            }
+            catch (ServiceException)
+            {
+                return BadRequest("Error al obtener los datos");
+            }
+            catch (RepositoryException)
+            {
+                return BadRequest("Error al guardar los datos");
+            }
         }
     }
 }

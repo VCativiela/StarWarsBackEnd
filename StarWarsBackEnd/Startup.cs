@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
+using StarWarsBackEnd.Services.Persistence.Classes;
+using StarWarsBackEnd.Services.Persistence.Interfaces;
+using StarWarsBackEnd.Services.Repositories.Clases;
+using StarWarsBackEnd.Services.Repositories.Interfaces;
+using StarWarsBackEnd.Services.Splitter;
 
 namespace StarWarsBackEnd
 {
@@ -26,6 +24,10 @@ namespace StarWarsBackEnd
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddScoped<IRepository, FileRepository>();
+            services.AddScoped<IDataSplitter, RebelSplitter>();
+            services.AddScoped<IFileWriter, FileWriter>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,7 +43,7 @@ namespace StarWarsBackEnd
             }
 
             app.UseHttpsRedirection();
-            app.UseMvc();
+            app.UseMvcWithDefaultRoute();
         }
     }
 }

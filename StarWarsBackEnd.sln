@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.852
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StarWarsBackEnd", "StarWarsBackEnd\StarWarsBackEnd.csproj", "{A83E78E7-EACB-4D78-8EA1-B7FCF7844AB5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StarWarsBackEnd.Test", "StarWarsBackEnd.Test\StarWarsBackEnd.Test.csproj", "{81825C85-EFE7-47C6-A436-4FB3DE148234}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{A83E78E7-EACB-4D78-8EA1-B7FCF7844AB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A83E78E7-EACB-4D78-8EA1-B7FCF7844AB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A83E78E7-EACB-4D78-8EA1-B7FCF7844AB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81825C85-EFE7-47C6-A436-4FB3DE148234}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81825C85-EFE7-47C6-A436-4FB3DE148234}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81825C85-EFE7-47C6-A436-4FB3DE148234}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81825C85-EFE7-47C6-A436-4FB3DE148234}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

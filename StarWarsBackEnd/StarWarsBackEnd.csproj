@@ -5,6 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Infraestructure\Log\" />
+    <Folder Include="Services\ExternalServices\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
