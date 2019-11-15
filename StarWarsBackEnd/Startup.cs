@@ -7,7 +7,7 @@ using StarWarsBackEnd.Services.Persistence.Classes;
 using StarWarsBackEnd.Services.Persistence.Interfaces;
 using StarWarsBackEnd.Services.Repositories.Clases;
 using StarWarsBackEnd.Services.Repositories.Interfaces;
-using StarWarsBackEnd.Services.Splitter;
+using StarWarsBackEnd.Services.Utilities;
 
 namespace StarWarsBackEnd
 {

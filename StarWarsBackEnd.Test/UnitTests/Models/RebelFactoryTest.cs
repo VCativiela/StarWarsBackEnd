@@ -5,24 +5,25 @@ using StarWarsBackEnd.Models.Factories;
 namespace StarWarsBackEnd.Test.Models.UnitTesting
 {
     [TestClass]
-    public class RebelFactoryTest
+    public class ValuesControllerTest
     {
         [TestMethod]
         public void CreateInstance_ValidData_ReturnsValidRebel()
         {
             //Arrange
-            var name = "Pedro";
-            var planet = "Planet";
+            var validName = "Pedro";
+            var validPlanet = "Marte";
 
             //Act
-            var rebel = RebelFactory.CreateInstance(name, planet);
+            var rebel = RebelFactory.CreateInstance(validName, validPlanet);
 
             //Assert
             Assert.IsNotNull(rebel);
             Assert.IsNotNull(rebel.Name);
             Assert.IsNotNull(rebel.Planet);
-            Assert.AreEqual(name, rebel.Name);
-            Assert.AreEqual(planet, rebel.Planet);
+            Assert.IsNotNull(rebel.DateTime);
+            Assert.AreEqual(validName, rebel.Name);
+            Assert.AreEqual(validPlanet, rebel.Planet);
         }
 
         [TestMethod]

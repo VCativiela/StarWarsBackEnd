@@ -1,0 +1,12 @@
+{
+  "ServerUri": "http://136.244.109.24",
+  "Organization": null,
+  "ProjectKey": "vicente",
+  "ProjectName": "vicente",
+  "Profiles": {
+    "CSharp": {
+      "ProfileKey": "AW31QGWltnnM68LeAFnk",
+      "ProfileTimestamp": "2019-10-23T21:52:17+02:00"
+    }
+  }
+}

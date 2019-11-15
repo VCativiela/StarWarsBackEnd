@@ -15,11 +15,16 @@ namespace StarWarsBackEnd.Services.Repositories.Clases
             _fileWriter = fileWriter;
         }
 
-        public void SaveData(List<Rebel> lista)
+        public void SaveData(List<Rebel> collection)
         {
+            if (collection == null)
+            {
+                throw new ServiceException("Null collection");
+            }
+
             try
             {
-                _fileWriter.SaveFile(lista);
+                _fileWriter.SaveFile(collection);
             }
             catch (Exception ex)
             {

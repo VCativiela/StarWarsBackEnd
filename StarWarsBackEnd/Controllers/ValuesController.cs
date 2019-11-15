@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using StarWarsBackEnd.Infraestructure.Exceptions.Models;
 using StarWarsBackEnd.Services.Repositories.Interfaces;
-using StarWarsBackEnd.Services.Splitter;
+using StarWarsBackEnd.Services.Utilities;
 using System.Collections.Specialized;
 
 namespace StarWarsBackEnd.Controllers
@@ -15,8 +15,8 @@ namespace StarWarsBackEnd.Controllers
 
         public ValuesController(IRepository repository, IDataSplitter dataSplitter)
         {
-            _repository = repository;
-            _dataSplitter = dataSplitter;
+            _repository = repository?? throw new ControllerException("Repository null");
+            _dataSplitter = dataSplitter ?? throw new ControllerException("DataSplitter null");
         }
 
         // POST api/values

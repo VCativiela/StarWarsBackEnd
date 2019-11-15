@@ -5,16 +5,18 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 
-namespace StarWarsBackEnd.Services.Splitter
+namespace StarWarsBackEnd.Services.Utilities
 {
     public class RebelSplitter : IDataSplitter
     {
-        public List<Rebel> SplitData(StringCollection collection)//, out IEnumerable<Exception> exceptions)
+        public List<Rebel> SplitData(StringCollection collection)
         {
-            var rebelList = new List<Rebel>();
+            if (collection == null)
+            {
+                throw new ServiceException("Collection null");
+            }
 
-            var rebelListEx = new List<Exception>();
-            //https://stackoverflow.com/questions/10630619/if-an-exception-is-thrown-in-a-listt-foreach-does-the-iteration-stop
+            var rebelList = new List<Rebel>();
 
             foreach (var linea in collection)
             {
@@ -26,10 +28,8 @@ namespace StarWarsBackEnd.Services.Splitter
                 catch (Exception ex)
                 {
                     throw new ServiceException("Error al recuperar los datos", ex);
-                   // rebelListEx.Add(new ServiceException("Error al procesar los datos", ex));
                 }
             }
-            // exceptions = rebelListEx;
 
             return rebelList;
         }
